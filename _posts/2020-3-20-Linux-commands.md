@@ -48,7 +48,8 @@ published: true
 파일 내용 출력
 
 ![-n 옵션: 행번호 표시 / ">" : redirect 하여 화면에 쓰는 내용을 파일에 쓸 수 있다]({{site.baseurl}}/images/스크린샷(123).jpg)
--n 옵션: 행번호 표시 / ">" : redirect 하여 화면에 쓰는 내용을 파일에 쓸 수 있다
+-n 옵션: 행번호 표시
+">" : redirect 하여 화면에 쓰는 내용을 파일에 쓸 수 있다
 <br />
 <br />
 <br />
@@ -99,7 +100,8 @@ less 화면
 2. 심볼릭링크 (-s 옵션): 파일을 가리키기만 하는 링크
 
 ![sample.txt의 링크 두 개를 만들었다. 하드링크는 원본과 inode가 같은 것을 보아 같은 파일을 가리키고, 심볼릭링크는 원본과 inode가 다른 것을 보아 원본을 가리키는 다른 파일이다.]({{site.baseurl}}/images/스크린샷(135).jpg)
-sample.txt의 링크 두 개를 만들었다. 하드링크는 원본과 inode가 같은 것을 보아 같은 파일을 가리키고, 심볼릭링크는 원본과 inode가 다른 것을 보아 원본을 가리키는 다른 파일이다.
+sample.txt의 링크 두 개를 만들었다. 하드링크는 원본과 inode가 같은 것을 보아 같은 파일을 가리키고, 
+심볼릭링크는 원본과 inode가 다른 것을 보아 원본을 가리키는 다른 파일이다.
 <br />
 <br />
 <br />
@@ -235,7 +237,7 @@ history 실행 후
 3. r 읽기, w 쓰기, x 실행
 
 ![chmod 실행 후 파일 권한이 rw-rw-r--에서  rw-r--r--으로 변경되었다]({{site.baseurl}}/images/스크린샷(155).jpg)
-chmod 실행 후 파일 권한이 rw-rw-r--에서  rw-r--r--으로 변경되었다
+chmod 실행 후 파일 권한이 rw-rw-r--에서 rw-r--r--으로 변경되었다
 <br />
 <br />
 <br />
@@ -247,7 +249,8 @@ chmod 실행 후 파일 권한이 rw-rw-r--에서  rw-r--r--으로 변경되었�
 2. 문자모드: chmod와 사용법이 동일
 
 ![umask 133 실행 후 만든 파일은 권한이 rw-r--r--이고, umask u=rw,g=rw,o=r 실행 후 만든 파일은 권한이 rw-rw-r--이 된다.]({{site.baseurl}}/images/스크린샷(156).jpg)
-umask 133 실행 후 만든 파일은 권한이 rw-r--r--이고, umask u=rw,g=rw,o=r 실행 후 만든 파일은 권한이 rw-rw-r--이 된다.
+umask 133 실행 후 만든 파일은 권한이 rw-r--r--이고, 
+umask u=rw,g=rw,o=r 실행 후 만든 파일은 권한이 rw-rw-r--이 된다.
 <br />
 <br />
 <br />
