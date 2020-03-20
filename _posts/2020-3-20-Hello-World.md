@@ -1,11 +1,7 @@
 ---
 layout: post
-title: You're up and running!
-published: true
----
----
-layout: post
 title: 리눅스 명령어 연습/정리
+published: true
 ---
 
 ## 1. date
