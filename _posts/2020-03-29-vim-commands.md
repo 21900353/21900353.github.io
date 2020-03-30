@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 # vim을 실행하면 Command mode에서 시작한다.
 
