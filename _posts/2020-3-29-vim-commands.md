@@ -1,4 +1,6 @@
 ---
+layout: post
+title: vim 명령어 연습/정리
 published: true
 ---
 # vim을 실행하면 Command mode에서 시작한다.
