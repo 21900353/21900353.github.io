@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: vim 명령어 연습/정리
+published: true
 ---
 # Git Command 정리
 
