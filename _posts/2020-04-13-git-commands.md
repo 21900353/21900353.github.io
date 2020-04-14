@@ -53,7 +53,7 @@ git_test.c 를 만들고 add 했다. git status의 "new file: git_test.c"라는 
 - ## git mv (파일) 
 파일, 디렉터리, 심볼릭 링크를 이동
 
-![vim-05-mv.jpg]({{site.baseurl}}/images/vim-05-mv.jpg)
+![git-05-mv.jpg]({{site.baseurl}}/images/git-05-mv.jpg)
 
 git_test.c 파일을 git_test_dir라는 디렉터리로 이동시켰다. git status에서 "renamed: git_test.c -> git_test_dir/git_test.c"라는 메시지를 확인할 수 있다 (파일경로 앞에 git_test_dir/가 붙었기 때문에 결국 rename 결과가 이동한 것과 같다).
 <br />
