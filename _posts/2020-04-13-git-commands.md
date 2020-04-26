@@ -146,7 +146,7 @@ test_branch 생성 후 git checkout test_branch를 실행했다. 'test_branch'�
 <br />
 <br />
 - ## git merge (브랜치)
-커밋간, 브랜치간, 또는 커밋과 작업 내용 사이의 바뀐 점 확인 <br />git diff (브랜치1) (브랜치2) : 두 브랜치의 차이점 <br />git diff (커밋1) (커밋2) : 두 커밋의 차이점 <br />git diff HEAD HEAD^ : 마지막 커밋과 그 이전 커밋의 차이점 <br />git diff : 스테이지 되지않은 변경 사항만 확인
+해당 브랜치에서 한 작업을 현재 브랜치에 병합 <br />
 
 
 ![git-16-merge.jpg]({{site.baseurl}}/images/git-16-merge.jpg)
@@ -155,7 +155,7 @@ test_branch에서 stats.txt를 수정하고 커밋했다. 그 다음 master 브�
 <br />
 <br />
 - ## git diff
-파일이나 커밋간 차이점을 확인
+파일이나 커밋간 차이점을 확인 <br />git diff (브랜치1) (브랜치2) : 두 브랜치의 차이점 <br />git diff (커밋1) (커밋2) : 두 커밋의 차이점 <br />git diff HEAD HEAD^ : 마지막 커밋과 그 이전 커밋의 차이점 <br />git diff : 스테이지 되지않은 변경 사항만 확인
 
 ![git-17-diff.jpg]({{site.baseurl}}/images/git-17-diff.jpg)
 
