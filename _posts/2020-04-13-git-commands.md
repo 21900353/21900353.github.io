@@ -1,6 +1,6 @@
 ---
 layout: post
-title: vim 명령어 연습/정리
+title: Git Command 
 published: true
 ---
 # Git Command 정리
