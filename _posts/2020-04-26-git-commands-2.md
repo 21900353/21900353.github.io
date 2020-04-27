@@ -34,23 +34,23 @@ git log (파일): 특정 파일에 대한 로그 확인<br />
 <br />
 ## 시나리오
 
-master 브랜치에서 파생된 second 브랜치가 있다. master와 second를 전환하며 작업하고, second에서 작업이 완료되면 second를 master에 병합할 것이다. 시나리오를 그림으로 나타내면 다음과 같다:
+master 브랜치에서 파생된 second 브랜치가 있다. master와 second를 전환하며 작업하고, second에서 작업이 완료되면 second를 master에 No fast forward 방법으로 병합할 것이다. 시나리오를 그림으로 나타내면 다음과 같다:
 
-![git2-01-diagram.png]({{site.baseurl}}/images/git2-01-diagram.png)
+![git2-01-diagram.png]({{site.baseurl}}/images/git2-01-diagram.png)<br />
 그림과 같이 파일을 추가하고, 수정하고, 브랜치가 (no fast forward)병합될 것이다. 
 
 ## second branch 
 v2 커밋에서는 git_test1.txt를 만들어 추가했고, v3 커밋에서는 git_test2.txt를 만들어 추가했다.
 
-![git2-02-v1.jpg]({{site.baseurl}}/images/git2-02-v1.jpg)
+![git2-02-v1.jpg]({{site.baseurl}}/images/git2-02-v1.jpg)<br />
 (초기 커밋 v1)
 
-![git2-03-v2.jpg]({{site.baseurl}}/images/git2-03-v2.jpg)
-![git2-04-v3.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-03-v2.jpg]({{site.baseurl}}/images/git2-03-v2.jpg)<br />
+![git2-04-v3.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
 v2, v3: 각 커밋에서는 새로 만들어진 git_test1.txt, git_test2.txt 파일을 추가했다.<br />
 <br />
 <br />
-v3 커밋 후 second 브랜치를 생성했다.
+v3 커밋 후 second 브랜치를 생성했다.<br />
 그리고 second 브랜치로 전환해 적업을 시작했다.
 
 ![git2-05-branch,checkout.jpg]({{site.baseurl}}/images/git2-05-branch,checkout.jpg)
@@ -63,165 +63,66 @@ v4 커밋에서는 git_test_second.txt라는 파일을 만들고 추가했다.<b
 <br />
 second 브랜치에서 작업을 끝냈고, 이제 master 브랜치로 전환해 작업할 차례이다.
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
 git checkout master를 실행해 master로 전환했다. 이후 vim에서 git_test1.txt를 수정한 후 커밋했다.<br />
 (두 번째 줄 "edited"를 추가했다)<br />
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
 v5: 수정한 파일 커밋
 
 v6에서도 마찬가지로 수정하고 커밋했다.
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
 v6 커밋<br />
 <br />
 <br />
 다시 second로 전환해 작업할 차례이다. git checkout second를 실행해 second로 전환했고, git_test_second.txt 수정 후 커밋했다. 
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
 v7 커밋<br />
 <br />
 <br />
+second에서 할 작업은 완료되었기 때문에, master로 병합할 차례이다. <br />
+master로 전환한 후, git merge --no-ff second를 실행해 No fast forward 방법으로 second 브랜치를 병합했다.
 
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+v8 커밋: second를 master로 병합<br />
 
+(Fast forward란 포인터를 앞으로 당기는 일을 뜻한다. master에서 변경사항이 없다면, fast forward 병합을 하는 경우 second에 있던 모든 커밋이 master로 합쳐지게 된다.<br />
+No fast forward 병합을 하면 브랜치는 브랜치대로 유지가 되면서 변경사항만 합쳐지는 커밋이 추가된다.)<br />
+아래 그림에서 시각적으로 설명하고 있다: 
 
+![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+왼쪽 FF, 오른쪽 No-FF<br />
+<br />
+<br />
+마지막으로 git_test_second.txt를 수정 후 커밋하면서 시나리오를 완료했다.
 
+![git2-12-v9.jpg]({{site.baseurl}}/images/git2-12-v9.jpg)<br />
+v9 커밋<br />
+<br />
+<br />
+## 깃 로그
 
+![git2-concl.jpg]({{site.baseurl}}/images/git2-concl.jpg)<br />
+<br />
+<br />
+<br />
 
-
-![vim-01-insert.jpg]({{site.baseurl}}/images/vim-01-insert.jpg)
+## * git rebase 
+rebase는 공통조상이 되는 base를 다른 브랜치가 가리키는 지점으로 바꾸는 일입니다. 그러면 base부터 현재 브랜치까지의 변경사항이 다른 브랜치의 앞에 합쳐지게 됩니다.<br />
+예를 들어 v7까지 커밋한 후 second 브랜치에서 git rebase master를 실행했다면, v4와 v7이 v6 앞에 위치하게 될 것입니다. <br />
 <br />
 <br />
-- ## i 외
-커서 위치를 현재 위치가 아닌 다른 위치에서 편집을 시작할 수 있다.<br />
-커서 위치는 우측하단에 (행,글자번호)로 확인할 수 있다.<br />
-a: 현재 커서의 다음 위치에서부터 편집을 시작한다.<br />
-A: 현재 행의 맨 끝으로 커서를 이동시키고 편집을 시작한다.<br />
-o: 현재 커서 아래에 새로운 줄을 추가하고 편집을 시작한다.<br />
-O: 현재 커서 위에 새로운 줄을 추가하고 편집을 시작한다.
-
-![vim-02-insert.jpg]({{site.baseurl}}/images/vim-02-insert.jpg)
+## git revert 
+revert는 특정 커밋의 변경사항을 취소한다. 커밋 이력은 남아있고 취소사항이 추가적으로 커밋된다.<br />
+예를 들어 v9까지 커밋한 후, git revert e778ef(v3커밋)을 실행했다면 v3 커밋에서 일어난 변경사항은 취소되고, 'Revert "add git_test2.txt"'라는 메시지의 커밋이 추가될 것이다.<br />
 <br />
 <br />
-<br />
-## Command mode 에서
-- ## 지우기
-x: 현재 커서 위치에서 한 글자를 지운다.<br />
-dw: 현재 커서 위치에서 그 단어의 끝까지 지운다<br />
-dd: 현재 행을 지운다.<br />
-사진에서 현재 커서 위치는 3행 e 앞이다.
-
-![vim-03-delete.jpg]({{site.baseurl}}/images/vim-03-delete.jpg)
-<br />
-<br />
-숫자+dd: 현재 커서 위치에서 입력한 숫자만큼의 행을 지운다.<br />
-아래 사진의 커서는 첫번째 행에 있고, 2dd를 입력했으므로 1~2행이 삭제되었다.
-
-![vim-04-delete.jpg]({{site.baseurl}}/images/vim-04-delete.jpg)
-<br />
-<br />
-<br />
-- ## 실행 취소/다시 실행
-u: 마지막으로 실행한 명령을 취소한다.
-
-![vim-05-undo.jpg]({{site.baseurl}}/images/vim-05-undo.jpg)
-<br />
-<br />
-U: 현재 행의 모든 수정사항을 취소한다.<br />
-Ctrl+r: 실행 취소한 명령을 다시 실행한다. 사진에서 U 입력 후 Ctrl+r을 했기 때문에 1번으로 돌아온다.<br />
-![vim-06-undo,redo.jpg]({{site.baseurl}}/images/vim-06-undo,redo.jpg)
-<br />
-<br />
-<br />
-- ## 내용 변경
-r: 현재 커서의 글자를 변경한다.
-
-![vim-07-replace.jpg]({{site.baseurl}}/images/vim-07-replace.jpg)
-<br />
-<br />
-cw: 현재 커서에서부터 단어 끝까지를 변경한다. 명령을 입력하면 그 부분이 삭제된 후 Insert mode로 진입한다.<br />
-c$: 현재 커서에서부터 행 끝까지를 변경한다. 명령을 입력하면 그 부분이 삭제된 후 Insert mode로 진입한다.
-
-![vim-08-cw.jpg]({{site.baseurl}}/images/vim-08-cw.jpg)
-<br />
-<br />
-<br />
-- ## 붙여넣기, 이동하기
-p: 복사된 내용이나 마지막으로 지운 내용을 붙여넣는다. (y: 복사)<br />
-행번호+Shift+g: 번호를 입력한 행으로 이동한다. 3+Shift+g를 입력했기 때문에 3 번째 행으로 이동한다.<br />
-Shift+g: 마지막 행으로 이동한다. <br />
-Ctrl+g: 파일 상태, 행 개수, 현재 커서 위치를 확인할 수 있다.
-
-![vim-09-paste,nav.jpg]({{site.baseurl}}/images/vim-09-paste,nav.jpg)
-<br />
-<br />
-<br />
-- ## 검색
-/검색어: 현재 위치에서 아래로 검색어를 찾는다. 사진에서 1번은 커서가 첫 번째 행 첫 번째 글자에 있었기 때문에, /member를 입력했을 때 가장 먼저 나타나는 member(7행) 앞으로 커서가 이동했다.<br />
-?검색어: 현재 위치에서 위로 검색어를 찾는다. 사진에서 2번은 커서가 7행에 있었기 때문에, ?member를 입력했을 때 가장 먼저 나타나는 include(3행) 앞으로 커서가 이동했다.<br />
-n: 검색한 후 아래쪽으로 다음 나타나는 검색어로 이동한다. 사진에서 3번은 7행 member를 찾은 상황이기 때문에, n을 입력하면 10행 member 앞으로 커서가 이동한다.<br />
-Shift+n: 검색한 후 위쪽으로 나타나는 검색어로 이동한다. 사진에서 4번은 검색어를 두 번째 찾은 상황이기 때문에, Shift+n을 입력하면 첫 번째 검색어 앞으로 커서가 이동한다.
-
-![vim-10-find.jpg]({{site.baseurl}}/images/vim-10-find.jpg)
-<br />
-<br />
-<br />
-## Command-line mode
-복잡한 명령을 실행할 때 쓰는 모드이다.
-
-- ## 내용 변경
-":s/찾는단어/새단어": 현재 행에서 찾는단어를 새단어 한 개만 변경한다.<br />
-":s/찾는단어/새단어/g": 현재 행에서 찾는단어를 모두 새단어로 변경한다.<br />
-":%s/찾는단어/새단어/g": 파일 내 모든 찾는단어를 새단어로 변경한다.<br />
-":%s/찾는단어/새단어/gc": 파일 내 모든 찾는단어를 물어보면서 새단어로 변경한다.
-
-![vim-11-cl_replace.jpg]({{site.baseurl}}/images/vim-11-cl_replace.jpg)
-<br />
-<br />
-":행번호,행번호s/찾는단어/새단어/g": 두 행 사이에서 모든 찾는단어를 새단어로 변경한다.
-
-![vim-12-cl_replace.jpg]({{site.baseurl}}/images/vim-12-cl_replace.jpg)
-<br />
-<br />
-<br />
-- ## 창 나눔
-":vs 파일이름": 수직으로 창을 나눠 파일을 읽어온다.
-
-![vim-13-vs.jpg]({{site.baseurl}}/images/vim-13-vs.jpg)
-<br />
-<br />
-":split 파일이름": 수평으로 창을 나눠 파일을 읽어온다.
-
-![vim-13-split.jpg]({{site.baseurl}}/images/vim-13-split.jpg)
-<br />
-<br />
-<br />
-- ## 외부 명령어 실행
-":!명령어": 쉘 명령어를 실행한다. 확인 창에서 엔터를 입력하면 다시 vim으로 돌아온다.
-
-![vim-14-shell.jpg]({{site.baseurl}}/images/vim-14-shell.jpg)
-<br />
-<br />
-<br />
-- ## 파일 내용 끼워넣기
-":r 파일이름": 현재 커서에 파일 내용을 가져온다.
-
-![vim-15-r.jpg]({{site.baseurl}}/images/vim-15-r.jpg)
-<br />
-<br />
-<br />
-- ## 파일 일부를 다른 이름의 파일로 저장
-":행번호,행번호w 파일이름": 두 행 사이의 내용을 다른 이름의 파일로 저장한다.
-
-![vim-16-write.jpg]({{site.baseurl}}/images/vim-16-write.jpg)
-<br />
-<br />
-<br />
-## Visual mode
-구간을 블록으로 설정할 때 쓰는 모드이다. 복사/자르기/붙여넣기 할 때 유용하다.<br />
-v를 입력해 Visual mode로 진입한다.
-
-사진에서 1번은 현재 커서 위치에서 v를 입력해 Visual mode로 진입한 후, k(위로 이동)를 4번 눌러 네 개의 행을 선택했다. 그 이후 2번 처럼 y를 입력해 복사한 후 p를 입력해 현재 커서 위치에 붙여넣었다. 
-
-![vim-17-visual.jpg]({{site.baseurl}}/images/vim-17-visual.jpg)
-<br />
+## git reset
+reset은 head 포인터를 지정한 커밋으로 재설정한다.<br />
+git reset (옵션) (커밋)에서 옵션에 대한 설명은 다음과 같다: <br />
+1. hard: 재설정한 커밋 이후의 모든 이력을 삭제<br />
+2. soft: 재설정한 커밋으로 돌아가고 해당하는 인덱스가 남는다<br />
+3. mixed(default): 재설정한 커밋으로 돌아가고 해당하는 인덱스는 초기화 된다<br />
+예를 들어 v9까지 커밋한 후, git reset --hard 558e9e(v6)를 실행하면 v7에서부터 v9까지의 커밋 이력은 모두 삭제될 것이다.
