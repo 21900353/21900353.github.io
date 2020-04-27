@@ -57,42 +57,42 @@ v3 커밋 후 second 브랜치를 생성했다.<br />
 git branch second를 실행하면 second라는 브랜치가 생성된다. 현재 master 브랜치에 있기 때문에 git checkout second를 실행해 second 브랜치로 전환했다.<br />
 <br />
 <br />
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)
+![git2-06-v4.jpg]({{site.baseurl}}/images/git2-06-v4.jpg)
 v4 커밋에서는 git_test_second.txt라는 파일을 만들고 추가했다.<br />
 <br />
 <br />
 second 브랜치에서 작업을 끝냈고, 이제 master 브랜치로 전환해 작업할 차례이다.
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-07-checkout.jpg]({{site.baseurl}}/images/git2-07-checkout.jpg)<br />
 git checkout master를 실행해 master로 전환했다. 이후 vim에서 git_test1.txt를 수정한 후 커밋했다.<br />
 (두 번째 줄 "edited"를 추가했다)<br />
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-08-v5.jpg]({{site.baseurl}}/images/git2-08-v5.jpg)<br />
 v5: 수정한 파일 커밋
 
 v6에서도 마찬가지로 수정하고 커밋했다.
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-09-v6.jpg]({{site.baseurl}}/images/git2-09-v6.jpg)<br />
 v6 커밋<br />
 <br />
 <br />
 다시 second로 전환해 작업할 차례이다. git checkout second를 실행해 second로 전환했고, git_test_second.txt 수정 후 커밋했다. 
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-10-v7.jpg]({{site.baseurl}}/images/git2-10-v7.jpg)<br />
 v7 커밋<br />
 <br />
 <br />
 second에서 할 작업은 완료되었기 때문에, master로 병합할 차례이다. <br />
 master로 전환한 후, git merge --no-ff second를 실행해 No fast forward 방법으로 second 브랜치를 병합했다.
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-11-v8,merge.jpg]({{site.baseurl}}/images/git2-11-v8,merge.jpg)<br />
 v8 커밋: second를 master로 병합<br />
 
 (Fast forward란 포인터를 앞으로 당기는 일을 뜻한다. master에서 변경사항이 없다면, fast forward 병합을 하는 경우 second에 있던 모든 커밋이 master로 합쳐지게 된다.<br />
 No fast forward 병합을 하면 브랜치는 브랜치대로 유지가 되면서 변경사항만 합쳐지는 커밋이 추가된다.)<br />
 아래 그림에서 시각적으로 설명하고 있다: 
 
-![git2-04-v4.jpg]({{site.baseurl}}/images/git2-04-v3.jpg)<br />
+![git2-merging.png]({{site.baseurl}}/images/git2-merging.png)<br />
 왼쪽 FF, 오른쪽 No-FF<br />
 <br />
 <br />
