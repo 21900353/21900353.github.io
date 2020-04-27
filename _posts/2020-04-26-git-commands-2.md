@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: Git Command 2
+published: true
 ---
 # git 협업
 
