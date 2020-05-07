@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: 리눅스 네트워크 명령어
+published: true
 ---
 # 리눅스 네트워크 명령어
 <br /><br />
