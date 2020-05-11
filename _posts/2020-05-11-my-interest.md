@@ -1,5 +1,7 @@
 ---
-published: false
+layout: post
+title: 전공 관심분야
+published: true
 ---
 제 전공은 컴퓨터공학입니다. 컴퓨터공학 중에서도 저는 특히 보안이나 인공지능에 관심이 있습니다.
 
