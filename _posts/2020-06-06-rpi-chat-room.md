@@ -128,13 +128,15 @@ byundb 데이터베이스에 접속 가능하고, mysql 데이터베이스에 �
     tar -czpf /backup/userdata_`date +%Y%m%d%H%M%S`.tgz /home 1>>/backup/log_`date +%Y%m%d` 2>>error_log_`date +%Y%m%d`
     mysqldump -uroot -p비밀번호 byundb |gzip > /backup/userdb_`date +%Y%m%d%H%M%S`.sql.gz
     find /backup/ -type f -mtime +7 | sort | xargs rm -f
+    
 ![backup.sh]({{site.baseurl}}/images/rpi404.jpg)
 <br/>
-</br>
+<br/>
 그리고 이 파일에 같은 권한을 줍니다: 
 `chmod 700 backup.sh`
 <br/>
 <br/>
+
 ![backup test]({{site.baseurl}}/images/rpi405.jpg)
 
 백업 스크립트 실행 결과, 백업 파일이 잘 만들어졌습니다.<br/>
